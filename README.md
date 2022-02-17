@@ -1,2 +1,2 @@
 # dummy
-Web server for testing cluster deployments
+HTTP server for testing cluster deployments.
