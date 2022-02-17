@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 type response struct {
@@ -13,6 +14,7 @@ type response struct {
 
 func main() {
 	e := echo.New()
+	e.Use(middleware.Logger())
 
 	e.GET("/", func(c echo.Context) error {
 		hostname, err := os.Hostname()
@@ -26,5 +28,5 @@ func main() {
 		return c.JSONPretty(http.StatusOK, r, "  ")
 	})
 
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":80"))
 }
